@@ -19,8 +19,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-if "show_intro" not in st.session_state:
-  st.session_state.show_intro = True
+# if "show_intro" not in st.session_state:
+#   st.session_state.show_intro = True
 
 stroke_width = st.sidebar.slider("Pen size", 1, 20, 3)
 
@@ -45,17 +45,17 @@ mode = st.sidebar.selectbox(
   )
 )
 
-intro = Image.open(Base_DIR/"intro.png").convert("RGBA")
-intro = intro.resize((1500, 800))
+# intro = Image.open(Base_DIR/"intro.png").convert("RGBA")
+# intro = intro.resize((1500, 800))
 # st.image(intro)
 
-background = intro if st.session_state.show_intro else None
+# background = intro
 canvas_result = st_canvas(
   fill_color="rgba(0, 0, 0, 0)",
   stroke_width=stroke_width,
   stroke_color=stroke_color,
   background_color=bg_color,
-  background_image=background,
+  # background_image=background,
   update_streamlit=False,
   width=1500,
   height=800,
@@ -63,15 +63,15 @@ canvas_result = st_canvas(
   key="canvas",
 )
 
-if(
-  st.session_state.show_intro
-  and canvas_result.json_data is not None
-):
-  objects = canvas_result.json_data.get("objects", [])
+# if(
+#   st.session_state.show_intro
+#   and canvas_result.json_data is not None
+# ):
+#   objects = canvas_result.json_data.get("objects", [])
 
-  if len(objects) > 0:
-    st.session_state.show_intro = False
-    st.rerun()
+#   if len(objects) > 0:
+#     st.session_state.show_intro = False
+#     st.rerun()
 
 if canvas_result.image_data is not None:
 
