@@ -1,6 +1,9 @@
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 from PIL import Image
+from pathlib import Path
+
+Base_DIR = Path(__file__).parent
 
 st.set_page_config(page_title="Canvas", page_icon="🎨", layout="wide")
 
@@ -42,7 +45,7 @@ mode = st.sidebar.selectbox(
   )
 )
 
-intro = Image.open("intro.png").convert("RGBA")
+intro = Image.open(Base_DIR/"intro.png").convert("RGBA")
 intro = intro.resize((1500, 800))
 
 background = intro if st.session_state.show_intro else None
