@@ -47,6 +47,7 @@ mode = st.sidebar.selectbox(
 
 intro = Image.open(Base_DIR/"intro.png").convert("RGBA")
 intro = intro.resize((1500, 800))
+st.image(intro)
 
 background = intro if st.session_state.show_intro else None
 canvas_result = st_canvas(
