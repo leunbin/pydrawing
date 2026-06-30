@@ -46,8 +46,8 @@ mode = st.sidebar.selectbox(
 )
 
 intro = Image.open(Base_DIR/"intro.png").convert("RGBA")
-intro = intro.resize((1500, 800))
-st.image(intro)
+# intro = intro.resize((1500, 800))
+# st.image(intro)
 
 background = intro if st.session_state.show_intro else None
 canvas_result = st_canvas(
@@ -55,7 +55,7 @@ canvas_result = st_canvas(
   stroke_width=stroke_width,
   stroke_color=stroke_color,
   background_color=bg_color,
-  # background_image=background,
+  background_image=background,
   width=1500,
   height=800,
   drawing_mode=mode,
