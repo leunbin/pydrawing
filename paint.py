@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 from PIL import Image
 from pathlib import Path
+import numpy as np
 
 Base_DIR = Path(__file__).parent
 
@@ -49,7 +50,7 @@ intro = Image.open(Base_DIR/"intro.png").convert("RGBA")
 # intro = intro.resize((1500, 800))
 # st.image(intro)
 
-background = intro if st.session_state.show_intro else None
+background = np.array(intro) if st.session_state.show_intro else None
 canvas_result = st_canvas(
   fill_color="rgba(0, 0, 0, 0)",
   stroke_width=stroke_width,
